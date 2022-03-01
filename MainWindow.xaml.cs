@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ECommerceApplication.MVVM.Views;
 
 namespace ECommerceApplication
 {
@@ -23,6 +24,18 @@ namespace ECommerceApplication
         public MainWindow()
         {
             InitializeComponent();
+            loginView.Visibility = Visibility.Visible;
+        }
+
+        private void Login_Success(object sender, EventArgs e)
+        {
+            loginView.Visibility = Visibility.Collapsed;
+            homeView.Visibility = Visibility.Visible;
+        }
+
+        private void Login_Failed(object sender, EventArgs e)
+        {
+            MessageBox.Show("Incorrect username or password", "Login failed", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
