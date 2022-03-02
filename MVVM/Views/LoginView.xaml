@@ -24,8 +24,8 @@
         <TextBox x:Name="TxtUsername" Grid.Column="1" Grid.Row="1" Width="200" Height="25" HorizontalAlignment="Left" Margin="10,0,0,0"/>
         <Label Content="Password" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
         <PasswordBox x:Name="TxtPassword" Grid.Column="1" Grid.Row="2" Width="200" Height="25" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-        <Button x:Name="BtnLogin" Content="Login" Grid.Column="0" Grid.Row="3" Width="100" Height="35" VerticalAlignment="Top" Click="BtnLogin_Click" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-        <!--IsEnabled="False"-->
+        <Button x:Name="BtnLogin" Content="Login" Grid.Column="0" Grid.Row="3" Width="100" Height="35" VerticalAlignment="Top" Click="BtnLogin_Click" HorizontalAlignment="Right" Margin="0,0,5,0" IsEnabled="False" LayoutUpdated="BtnLogin_LayoutUpdated"/>
+        
         <Button x:Name="BtnSignup" Content="Signup" Grid.Column="1" Grid.Row="3" Width="100" Height="35" VerticalAlignment="Top" Click="BtnSignup_Click" HorizontalAlignment="Left" Margin="5,0,0,0"/>
     </Grid>
 </UserControl>

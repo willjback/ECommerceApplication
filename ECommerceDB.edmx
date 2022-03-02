@@ -60,7 +60,7 @@ warning 6002: The table/view 'ECommerce.dbo.Users' does not have a primary key d
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="ProductImage" Type="Binary" MaxLength="255" FixedLength="false" />
+          <Property Name="ProductImage" Type="String" />
         </EntityType>
         <EntityType Name="User">
           <Key>

@@ -54,6 +54,6 @@
             <PasswordBox x:Name="TxtConfirmPasswordSignup" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Width="200" />
         </Grid>
 
-        <Button x:Name="BtnCreateAccount" Content="Create Account"  Grid.Row="4" Grid.Column="1" Width="150" Height="35" HorizontalAlignment="Center"/>
+        <Button x:Name="BtnCreateAccount" Content="Create Account"  Grid.Row="4" Grid.Column="1" Width="150" Height="35" HorizontalAlignment="Center" Click="BtnCreateAccount_Click" IsEnabled="False" LayoutUpdated="BtnCreateAccount_LayoutUpdated"/>
     </Grid>
 </UserControl>

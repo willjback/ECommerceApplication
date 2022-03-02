@@ -47,5 +47,13 @@ namespace ECommerceApplication.MVVM.Views
         {
             Signup(this, null);
         }
+
+        private void BtnLogin_LayoutUpdated(object sender, EventArgs e)
+        {
+            if (TxtUsername.Text != string.Empty && TxtPassword.Password != string.Empty)
+                BtnLogin.IsEnabled = true;
+            else
+                BtnLogin.IsEnabled = false;
+        }
     }
 }

@@ -68,5 +68,10 @@ namespace ECommerceApplication
         {
             ToLogonPage();
         }
+
+        private void CreateAccount_Clicked(object sender, EventArgs e)
+        {
+            ToLogonPage();
+        }
     }
 }
