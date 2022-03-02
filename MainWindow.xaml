@@ -9,8 +9,9 @@
         Title="E-Commerce Application" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     
     <Grid>
-        <views:LoginView x:Name="loginView" Visibility="Collapsed" LoginSuccess="Login_Success" LoginFailed="Login_Failed"/>
+        <views:LoginView x:Name="loginView" Visibility="Collapsed" LoginSuccess="Login_Success" LoginFailed="Login_Failed" Signup="Signup_Clicked"/>
         <views:HomeView x:Name="homeView" Visibility="Collapsed"/>
+        <views:SignupView x:Name="signupView"  Visibility="Collapsed" Back="Back_Clicked"/>
         <DockPanel>
             
         </DockPanel>

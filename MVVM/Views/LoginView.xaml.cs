@@ -23,6 +23,7 @@ namespace ECommerceApplication.MVVM.Views
     {
         public event EventHandler LoginSuccess;
         public event EventHandler LoginFailed;
+        public event EventHandler Signup;
 
         public LoginView()
         {
@@ -40,6 +41,11 @@ namespace ECommerceApplication.MVVM.Views
             {
                 LoginFailed(this, null);
             }
+        }
+
+        private void BtnSignup_Click(object sender, RoutedEventArgs e)
+        {
+            Signup(this, null);
         }
     }
 }

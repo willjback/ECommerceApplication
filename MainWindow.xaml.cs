@@ -24,8 +24,29 @@ namespace ECommerceApplication
         public MainWindow()
         {
             InitializeComponent();
-            loginView.Visibility = Visibility.Visible;
+            ToLogonPage();
         }
+
+        public void ToLogonPage()
+        {
+            loginView.Visibility = Visibility.Visible;
+            homeView.Visibility = Visibility.Collapsed;
+            signupView.Visibility = Visibility.Collapsed;
+        }
+        public void ToHomePage()
+        {
+            homeView.Visibility = Visibility.Visible;
+            loginView.Visibility = Visibility.Collapsed;
+            signupView.Visibility = Visibility.Collapsed;
+        }
+
+        public void ToSignupPage()
+        {
+            signupView.Visibility = Visibility.Visible;
+            homeView.Visibility = Visibility.Collapsed;
+            loginView.Visibility = Visibility.Collapsed;
+        }
+
 
         private void Login_Success(object sender, EventArgs e)
         {
@@ -36,6 +57,16 @@ namespace ECommerceApplication
         private void Login_Failed(object sender, EventArgs e)
         {
             MessageBox.Show("Incorrect username or password", "Login failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void Signup_Clicked(object sender, EventArgs e)
+        {
+            ToSignupPage();
+        }
+
+        private void Back_Clicked(object sender, EventArgs e)
+        {
+            ToLogonPage();
         }
     }
 }
