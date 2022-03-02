@@ -17,8 +17,10 @@ namespace ECommerceApplication.Dialog
     /// <summary>
     /// Interaction logic for ViewItemDialog.xaml
     /// </summary>
+    /// 
     public partial class ViewItemDialog : Window
     {
+        List<string> cartList = new List<string>();
         public ViewItemDialog()
         {
             InitializeComponent();
@@ -38,7 +40,6 @@ namespace ECommerceApplication.Dialog
         {
             LblQuantity.Content = Int32.Parse(LblQuantity.Content.ToString()) + 1;
             LblTotalPrice.Content = String.Format("{0:C}", Decimal.Parse(LblTotalPrice.Content.ToString().TrimStart('$')) + Decimal.Parse(LblPrice.Content.ToString().TrimStart('$')));
-
         }
 
         private void BtnSubtractQuantity_Click(object sender, RoutedEventArgs e)
@@ -48,6 +49,18 @@ namespace ECommerceApplication.Dialog
                 LblQuantity.Content = Int32.Parse(LblQuantity.Content.ToString()) - 1;
                 LblTotalPrice.Content = String.Format("{0:C}", Decimal.Parse(LblTotalPrice.Content.ToString().TrimStart('$')) - Decimal.Parse(LblPrice.Content.ToString().TrimStart('$')));
             }
+        }
+        private void BtnAddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            cartList.Add(LblProductName.Content.ToString());
+            cartList.Add(LblQuantity.Content.ToString());
+            cartList.Add(LblTotalPrice.Content.ToString());
+            this.Close();
+        }
+
+        private void BtnCloseViewItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -27,17 +27,14 @@ namespace ECommerceApplication
             ToLogonPage();
         }
 
+        #region Navigation
         public void ToLogonPage()
         {
             loginView.Visibility = Visibility.Visible;
             homeView.Visibility = Visibility.Collapsed;
             signupView.Visibility = Visibility.Collapsed;
-        }
-        public void ToHomePage()
-        {
-            homeView.Visibility = Visibility.Visible;
-            loginView.Visibility = Visibility.Collapsed;
-            signupView.Visibility = Visibility.Collapsed;
+            cartView.Visibility = Visibility.Collapsed;
+            accountView.Visibility = Visibility.Collapsed;
         }
 
         public void ToSignupPage()
@@ -45,13 +42,54 @@ namespace ECommerceApplication
             signupView.Visibility = Visibility.Visible;
             homeView.Visibility = Visibility.Collapsed;
             loginView.Visibility = Visibility.Collapsed;
+            cartView.Visibility = Visibility.Collapsed;
+            accountView.Visibility = Visibility.Collapsed;
         }
 
+        public void ToHomePage()
+        {
+            homeView.Visibility = Visibility.Visible;
+            loginView.Visibility = Visibility.Collapsed;
+            signupView.Visibility = Visibility.Collapsed;
+            cartView.Visibility = Visibility.Collapsed;
+            accountView.Visibility = Visibility.Collapsed;
 
+            BtnHome.BorderThickness = new Thickness(1.0);
+            BtnCart.BorderThickness = new Thickness(0);
+            BtnAccount.BorderThickness = new Thickness(0);
+        }
+
+        public void ToCartPage()
+        {
+            cartView.Visibility = Visibility.Visible;
+            signupView.Visibility = Visibility.Collapsed;
+            homeView.Visibility = Visibility.Collapsed;
+            loginView.Visibility = Visibility.Collapsed;
+            accountView.Visibility = Visibility.Collapsed;
+
+            BtnHome.BorderThickness = new Thickness(0);
+            BtnCart.BorderThickness = new Thickness(1.0);
+            BtnAccount.BorderThickness = new Thickness(0);
+        }
+
+        public void ToAccountPage()
+        {
+            accountView.Visibility = Visibility.Visible;
+            cartView.Visibility = Visibility.Collapsed;
+            signupView.Visibility = Visibility.Collapsed;
+            homeView.Visibility = Visibility.Collapsed;
+            loginView.Visibility = Visibility.Collapsed;
+
+            BtnHome.BorderThickness = new Thickness(0);
+            BtnCart.BorderThickness = new Thickness(0);
+            BtnAccount.BorderThickness = new Thickness(1.0);
+        }
+        #endregion
+
+        #region EventHandlers
         private void Login_Success(object sender, EventArgs e)
         {
-            loginView.Visibility = Visibility.Collapsed;
-            homeView.Visibility = Visibility.Visible;
+            ToHomePage();
         }
 
         private void Login_Failed(object sender, EventArgs e)
@@ -73,5 +111,31 @@ namespace ECommerceApplication
         {
             ToLogonPage();
         }
+
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
+        {
+            ToHomePage();
+        }
+
+        private void BtnCart_Click(object sender, RoutedEventArgs e)
+        {
+            ToCartPage();
+        }
+
+        private void BtnAccount_Click(object sender, RoutedEventArgs e)
+        {
+            ToAccountPage();
+        }
+
+        private void BtnLogoff_Click(object sender, RoutedEventArgs e)
+        {
+            ToLogonPage();
+        }
+
+        private void Window_LayoutUpdated(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }

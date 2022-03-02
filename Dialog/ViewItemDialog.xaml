@@ -30,9 +30,18 @@
             <Button x:Name="BtnSubtractQuantity" Content="-" Grid.Column="1" Width="20" Height="20" Click="BtnSubtractQuantity_Click"/>
             <Label x:Name="LblQuantity" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
             <Button x:Name="BtnAddQuantity" Content="+" Grid.Column="3" Width="20" Height="20" Click="BtnAddQuantity_Click"/>
-            <Label Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Content="Total: "/>
+            <Label Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Content="Total: " Margin="40,0,0,0"/>
             <Label x:Name="LblTotalPrice" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        </Grid>
 
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="BtnCloseViewItem" Grid.Column="0"  Content="Close" Width="70" Height="30" Click="BtnCloseViewItem_Click"/>
+            <Button x:Name="BtnAddToCart" Grid.Column="1" Content="Add to Cart" Width="70" Height="30" Click="BtnAddToCart_Click"/>
         </Grid>
     </Grid>
 </Window>

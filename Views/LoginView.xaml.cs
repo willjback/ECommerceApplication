@@ -23,6 +23,8 @@ namespace ECommerceApplication.Views
         {
             if (IsLoginInfoCorrect(TxtUsername.Text, TxtPassword.Password))
             {
+                TxtUsername.Clear();
+                TxtPassword.Clear();
                 LoginSuccess(this, null);
             }
             else
@@ -33,6 +35,8 @@ namespace ECommerceApplication.Views
 
         private void BtnSignup_Click(object sender, RoutedEventArgs e)
         {
+            TxtUsername.Clear();
+            TxtPassword.Clear();
             Signup(this, null);
         }
 

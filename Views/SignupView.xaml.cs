@@ -20,6 +20,9 @@ namespace ECommerceApplication.Views
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
+            TxtUsernameSignup.Clear();
+            TxtPasswordSignup.Clear();
+            TxtConfirmPasswordSignup.Clear();
             Back(this, null);
         }
 
@@ -44,6 +47,10 @@ namespace ECommerceApplication.Views
             user.IsAdmin = false;
             entities.Users.Add(user);
             entities.SaveChanges();
+
+            TxtUsernameSignup.Clear();
+            TxtPasswordSignup.Clear();
+            TxtConfirmPasswordSignup.Clear();
 
             CreateAccount(this, null);
         }
