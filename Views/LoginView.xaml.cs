@@ -1,20 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ECommerceApplication.MVVM.ViewModels;
 
-namespace ECommerceApplication.MVVM.Views
+namespace ECommerceApplication.Views
 {
     /// <summary>
     /// Interaction logic for LoginView.xaml
@@ -32,8 +21,7 @@ namespace ECommerceApplication.MVVM.Views
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            LoginViewModel user = new LoginViewModel();
-            if (user.IsLoginInfoCorrect(TxtUsername.Text, TxtPassword.Password))
+            if (IsLoginInfoCorrect(TxtUsername.Text, TxtPassword.Password))
             {
                 LoginSuccess(this, null);
             }
@@ -54,6 +42,21 @@ namespace ECommerceApplication.MVVM.Views
                 BtnLogin.IsEnabled = true;
             else
                 BtnLogin.IsEnabled = false;
+        }
+
+
+        ECommerceEntities entities = new ECommerceEntities();
+        public bool IsLoginInfoCorrect(string username, string password)
+        {
+            var user = entities.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            if (user != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

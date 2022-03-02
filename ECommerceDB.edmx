@@ -5,47 +5,26 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ECommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ECommerce.dbo.Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Products">
           <Key>
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="Price" />
-            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="ProductID" />
           </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="money" Nullable="false" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="ProductImage" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ECommerce.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="Username" />
-            <PropertyRef Name="Password" />
-            <PropertyRef Name="IsAdmin" />
+            <PropertyRef Name="UserID" />
           </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ECommerceModelStoreContainer">
-          <EntitySet Name="Products" EntityType="Self.Products" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Products].[ProductName] AS [ProductName], 
-    [Products].[Price] AS [Price], 
-    [Products].[Quantity] AS [Quantity], 
-    [Products].[ProductImage] AS [ProductImage]
-    FROM [dbo].[Products] AS [Products]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Users].[Username] AS [Username], 
-    [Users].[Password] AS [Password], 
-    [Users].[IsAdmin] AS [IsAdmin]
-    FROM [dbo].[Users] AS [Users]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -53,21 +32,17 @@ warning 6002: The table/view 'ECommerce.dbo.Users' does not have a primary key d
       <Schema Namespace="ECommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="Price" />
-            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="ProductID" />
           </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="ProductImage" Type="String" />
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="Username" />
-            <PropertyRef Name="Password" />
-            <PropertyRef Name="IsAdmin" />
+            <PropertyRef Name="UserID" />
           </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
@@ -85,16 +60,16 @@ warning 6002: The table/view 'ECommerce.dbo.Users' does not have a primary key d
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ECommerceModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="ECommerceModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />

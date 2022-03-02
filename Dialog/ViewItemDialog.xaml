@@ -1,0 +1,38 @@
+﻿<Window x:Class="ECommerceApplication.Dialog.ViewItemDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ECommerceApplication.Dialog"
+        mc:Ignorable="d"
+        Title="ViewItemDialog" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="LblProductName" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label x:Name="LblPrice" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="BtnSubtractQuantity" Content="-" Grid.Column="1" Width="20" Height="20" Click="BtnSubtractQuantity_Click"/>
+            <Label x:Name="LblQuantity" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Button x:Name="BtnAddQuantity" Content="+" Grid.Column="3" Width="20" Height="20" Click="BtnAddQuantity_Click"/>
+            <Label Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="20" Content="Total: "/>
+            <Label x:Name="LblTotalPrice" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+
+        </Grid>
+    </Grid>
+</Window>
