@@ -39,7 +39,7 @@
                 <TextBox x:Name="TxtUsername" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20"/>
                 <Label Content="Password" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,35,0" Foreground="White"/>
                 <PasswordBox x:Name="TxtPassword" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20"/>
-                <Button x:Name="BtnLogin" Content="Login" Grid.Column="0" Grid.Row="5" Width="100" Height="35" VerticalAlignment="Top" Click="BtnLogin_Click" HorizontalAlignment="Right" Margin="0,30,5,0" IsEnabled="False" LayoutUpdated="BtnLogin_LayoutUpdated" Background="{x:Null}" Foreground="White" BorderBrush="White"/>
+                <Button x:Name="BtnLogin" Content="Login" Grid.Column="0" Grid.Row="5" Width="100" Height="35" VerticalAlignment="Top" Click="BtnLogin_Click" HorizontalAlignment="Right" Margin="0,30,5,0" Background="{x:Null}" Foreground="White" BorderBrush="White"/>
 
 
                 <Button x:Name="BtnSignup" Content="Signup" Grid.Column="1" Grid.Row="5" Width="100" Height="35" VerticalAlignment="Top" Click="BtnSignup_Click" HorizontalAlignment="Left" Margin="5,30,0,0" Background="{x:Null}" Foreground="White" BorderBrush="White"/>

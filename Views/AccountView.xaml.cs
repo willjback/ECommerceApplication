@@ -33,13 +33,19 @@ namespace ECommerceApplication.Views
 
         private void BtnChangeUsername_Click(object sender, RoutedEventArgs e)
         {
+            if (TxtNewUsername.Text == string.Empty || TxtConfirmUsername.Text == string.Empty)
+            {
+                MessageBox.Show("Username text fields must be filled out!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (TxtNewUsername.Text != TxtConfirmUsername.Text)
             {
                 MessageBox.Show("Usernames don't match!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            string currentUsername = File.ReadLines(filepath).Take(1).First();
+            string currentUsername = File.ReadLines(filepath).Skip(1).Take(1).First();
             var user = entities.Users.FirstOrDefault(u => currentUsername == u.Username);
 
             if (user == null)
@@ -62,15 +68,24 @@ namespace ECommerceApplication.Views
             entities.SaveChanges();
 
             string[] arrLines = File.ReadAllLines(filepath);
-            arrLines[0] = TxtNewUsername.Text;
+            arrLines[1] = TxtNewUsername.Text;
             File.WriteAllLines(filepath, arrLines);
+
+            RefreshAccountPage();
 
             UsernameChanged(this, null);
         }
 
         private void BtnChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            string currentPassword = File.ReadLines(filepath).Skip(1).Take(1).First();
+
+            if (TxtCurrentPassword.Password == string.Empty || TxtNewPassword.Password == string.Empty || TxtConfirmPassword.Password == string.Empty)
+            {
+                MessageBox.Show("Password text fields must be filled out!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            string currentPassword = File.ReadLines(filepath).Skip(2).Take(1).First();
 
             if (TxtCurrentPassword.Password != currentPassword)
             {
@@ -108,6 +123,38 @@ namespace ECommerceApplication.Views
             string[] arrLines = File.ReadAllLines(filepath);
             arrLines[1] = TxtNewPassword.Password;
             File.WriteAllLines(filepath, arrLines);
+
+            RefreshAccountPage();
+        }
+
+        private void RefreshAccountPage()
+        {
+            entities.SaveChanges();
+            int userId = Int32. Parse(File.ReadLines(filepath).Take(1).First());
+
+            var user = entities.Users.FirstOrDefault(u => u.UserID == userId);
+
+            if (user != null)
+            {
+                LblUserIDAccountPage.Content = user.UserID;
+                LblUsernameAccountPage.Content = user.Username;
+                LblBalanceAccountPage.Content = String.Format("{0:C}", decimal.Parse(File.ReadLines(filepath).Skip(4).Take(1).First()));
+                if (user.IsAdmin)
+                    LblAccountTypeAccountPage.Content = "Admin";
+                else
+                    LblAccountTypeAccountPage.Content = "User";
+            }
+
+            TxtNewUsername.Clear();
+            TxtConfirmUsername.Clear();
+            TxtCurrentPassword.Clear();
+            TxtNewPassword.Clear();
+            TxtConfirmPassword.Clear();
+        }
+
+        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            RefreshAccountPage();
         }
     }
 }

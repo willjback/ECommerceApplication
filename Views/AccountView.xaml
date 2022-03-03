@@ -5,57 +5,105 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECommerceApplication.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" FontFamily="Segoe UI Light" FontSize="12" IsVisibleChanged="UserControl_IsVisibleChanged">
     <Grid Background="GhostWhite">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Border Grid.Row="1" Grid.Column="1" CornerRadius="20" Background="Lavender">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <Label Content="New Username" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="20,0,0,0"/>
-            <TextBox x:Name="TxtNewUsername" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
-            <Label Content="Confirm Username" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="20,0,0,0"/>
-            <TextBox x:Name="TxtConfirmUsername" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
-            <Button x:Name="BtnChangeUsername" Content="Change Username" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Width="110" Height="35" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0,30,5,0" Background="#FFF0E5E5" Foreground="Black" BorderBrush="White" Click="BtnChangeUsername_Click"/>
-        </Grid>
+                <Border Grid.Column="0">
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
 
-        <Grid Grid.Column="1" VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+                        <Label Content="UserID: "  Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="Segoe UI Semibold" FontSize="14"/>
+                        <Label x:Name="LblUserIDAccountPage" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
 
-            <Label Content="Current Password" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="20,0,0,0"/>
-            <PasswordBox x:Name="TxtCurrentPassword" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
-            <Label Content="New Password" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="20,0,0,0"/>
-            <PasswordBox x:Name="TxtNewPassword" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
-            <Label Content="Confirm Password" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="20,0,0,0"/>
-            <PasswordBox x:Name="TxtConfirmPassword" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
-            <Button x:Name="BtnChangePassword" Content="Change Password" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Width="110" Height="35" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0,30,5,0" Background="#FFF0E5E5" Foreground="Black" BorderBrush="White" Click="BtnChangePassword_Click"/>
-        </Grid>
-        
+                        <Label Content="Username: " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="Segoe UI Semibold" FontSize="14"/>
+                        <Label x:Name="LblUsernameAccountPage" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
+
+                        <Label Content="Balance: " Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="Segoe UI Semibold" FontSize="14"/>
+                        <Label x:Name="LblBalanceAccountPage" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
+
+                        <Label Content="Account Type: " Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="Segoe UI Semibold" FontSize="14"/>
+                        <Label x:Name="LblAccountTypeAccountPage" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"/>
+                    </Grid>
+                </Border>
+
+
+                <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1,0">
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="New Username" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="15,0,0,0"/>
+                        <TextBox x:Name="TxtNewUsername" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
+                        <Label Content="Confirm Username" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="15,0,0,0"/>
+                        <TextBox x:Name="TxtConfirmUsername" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
+                        <Button x:Name="BtnChangeUsername" Content="Change Username" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Height="35" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0,30,5,0" Background="#FFF0E5E5" Foreground="Black" BorderBrush="White" Click="BtnChangeUsername_Click"/>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="2">
+                    <Grid Grid.Column="2" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Current Password" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="15,0,0,0"/>
+                        <PasswordBox x:Name="TxtCurrentPassword" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
+                        <Label Content="New Password" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="15,0,0,0"/>
+                        <PasswordBox x:Name="TxtNewPassword" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
+                        <Label Content="Confirm Password" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="15,0,0,0"/>
+                        <PasswordBox x:Name="TxtConfirmPassword" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
+                        <Button x:Name="BtnChangePassword" Content="Change Password" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Height="35" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0,30,5,0" Background="#FFF0E5E5" Foreground="Black" BorderBrush="White" Click="BtnChangePassword_Click"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

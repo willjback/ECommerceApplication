@@ -25,15 +25,23 @@ namespace ECommerceApplication.Views
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            if (TxtUsername.Text == string.Empty || TxtPassword.Password == string.Empty)
+            {
+                MessageBox.Show("Username and password must be filled out", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (IsLoginInfoCorrect(TxtUsername.Text, TxtPassword.Password))
             {
                 var user = entities.Users.FirstOrDefault(u => TxtUsername.Text == u.Username);
 
                 string filepath = @"C:\MSSA\20483\Project\ECommerceApplication\userinfo.txt";
                 StringBuilder userInfo = new StringBuilder();
+                userInfo.Append(user.UserID + "\n");
                 userInfo.Append(user.Username + "\n");
                 userInfo.Append(user.Password + "\n");
                 userInfo.Append(user.IsAdmin + "\n");
+                userInfo.Append(user.Balance + "\n");
 
                 File.WriteAllText(filepath, userInfo.ToString());
 
@@ -52,14 +60,6 @@ namespace ECommerceApplication.Views
             TxtUsername.Clear();
             TxtPassword.Clear();
             Signup(this, null);
-        }
-
-        private void BtnLogin_LayoutUpdated(object sender, EventArgs e)
-        {
-            if (TxtUsername.Text != string.Empty && TxtPassword.Password != string.Empty)
-                BtnLogin.IsEnabled = true;
-            else
-                BtnLogin.IsEnabled = false;
         }
 
         public bool IsLoginInfoCorrect(string username, string password)

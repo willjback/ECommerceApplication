@@ -20,8 +20,14 @@ namespace ECommerceApplication.Views
             gridProducts.ItemsSource = entities.Products.ToList();
         }
 
-        private void BtnSelect_Click(object sender, RoutedEventArgs e)
+        private void BtnSelectItem_Click(object sender, RoutedEventArgs e)
         {
+            if (gridProducts.SelectedItem == null)
+            {
+                MessageBox.Show("You must click an item in the grid first", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             ViewItemDialog productViewer = new ViewItemDialog();
             productViewer.ShowItem((Product)gridProducts.SelectedItem);
         }

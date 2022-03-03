@@ -30,8 +30,8 @@ namespace ECommerceApplication.Dialog
         {
             LblProductName.Content = item.ProductName;
             LblPrice.Content = String.Format("{0:C}", item.Price);
-            LblQuantity.Content = "0";
-            LblTotalPrice.Content = "$0.00";
+            LblQuantity.Content = "1";
+            LblTotalPrice.Content = LblPrice.Content;
 
             this.Show();
         }
@@ -44,7 +44,7 @@ namespace ECommerceApplication.Dialog
 
         private void BtnSubtractQuantity_Click(object sender, RoutedEventArgs e)
         {
-            if (Int32.Parse(LblQuantity.Content.ToString()) != 0)
+            if (Int32.Parse(LblQuantity.Content.ToString()) != 1)
             {
                 LblQuantity.Content = Int32.Parse(LblQuantity.Content.ToString()) - 1;
                 LblTotalPrice.Content = String.Format("{0:C}", Decimal.Parse(LblTotalPrice.Content.ToString().TrimStart('$')) - Decimal.Parse(LblPrice.Content.ToString().TrimStart('$')));
@@ -52,12 +52,6 @@ namespace ECommerceApplication.Dialog
         }
         private void BtnAddToCart_Click(object sender, RoutedEventArgs e)
         {
-            if (LblQuantity.Content.ToString() == "0")
-            {
-                MessageBox.Show("Quantity must be at least 1", "", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
             Cart cart = new Cart();
             cart.Product = LblProductName.Content.ToString();
             cart.Quantity = Int32.Parse(LblQuantity.Content.ToString());

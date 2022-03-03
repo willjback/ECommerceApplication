@@ -28,6 +28,12 @@ namespace ECommerceApplication.Views
 
         private void BtnCreateAccount_Click(object sender, RoutedEventArgs e)
         {
+            if (TxtUsernameSignup.Text == string.Empty || TxtPasswordSignup.Password == string.Empty || TxtConfirmPasswordSignup.Password == string.Empty)
+            {
+                MessageBox.Show("All text fields must be filled out", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             ECommerceEntities entities = new ECommerceEntities();
             var user = entities.Users.FirstOrDefault(un => un.Username == TxtUsernameSignup.Text);
             if (user != null)
@@ -45,6 +51,7 @@ namespace ECommerceApplication.Views
             user.Username = TxtUsernameSignup.Text;
             user.Password = TxtPasswordSignup.Password;
             user.IsAdmin = false;
+            user.Balance = 1000.00m;
             entities.Users.Add(user);
             entities.SaveChanges();
 
@@ -53,14 +60,6 @@ namespace ECommerceApplication.Views
             TxtConfirmPasswordSignup.Clear();
 
             CreateAccount(this, null);
-        }
-
-        private void BtnCreateAccount_LayoutUpdated(object sender, EventArgs e)
-        {
-            if (TxtUsernameSignup.Text != string.Empty && TxtPasswordSignup.Password != string.Empty && TxtConfirmPasswordSignup.Password != string.Empty)
-                BtnCreateAccount.IsEnabled = true;
-            else
-                BtnCreateAccount.IsEnabled = false;
         }
     }
 }

@@ -6,30 +6,36 @@
         xmlns:local="clr-namespace:ECommerceApplication"
         xmlns:views="clr-namespace:ECommerceApplication.Views"
         mc:Ignorable="d"
-        Title="E-Commerce Application" Height="450" Width="800" WindowStartupLocation="CenterScreen" FontSize="20">
+        Title="E-Commerce Application" Height="450" Width="800" WindowStartupLocation="CenterScreen" FontFamily="Segoe UI Semibold" FontSize="20">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <StackPanel Background="CadetBlue" Orientation="Horizontal" Grid.Row="0">
-            <Button x:Name="BtnHome" Content="Home" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnHome_Click" BorderThickness="0"/>
-            <Button x:Name="BtnCart" Content="Cart" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnCart_Click" BorderThickness="0"/>
-            <Button x:Name="BtnAccount" Content="Account" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnAccount_Click" BorderThickness="0"/>
-            <Button x:Name="BtnLogout" Content="Logout" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnLogout_Click" BorderThickness="0"/>
+            <Grid Grid.Row="0" Background="CadetBlue" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <Label x:Name="LblWelcomeUser"/>
-        </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                    <Button x:Name="BtnHome" Content="Home" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnHome_Click" BorderThickness="0"/>
+                    <Button x:Name="BtnCart" Content="Cart" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnCart_Click" BorderThickness="0"/>
+                    <Button x:Name="BtnAccount" Content="Account" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnAccount_Click" BorderThickness="0"/>
+                    <Button x:Name="BtnLogout" Content="Logout" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnLogout_Click" BorderThickness="0"/>
+                </StackPanel>
 
-        <views:LoginView x:Name="loginView" Grid.Row="0" Grid.RowSpan="2" Visibility="Collapsed" LoginSuccess="Login_Success" LoginFailed="Login_Failed" Signup="Signup_Clicked"/>
-        <views:SignupView x:Name="signupView" Grid.Row="0" Grid.RowSpan="2" Visibility="Collapsed" Back="Back_Clicked" CreateAccount="CreateAccount_Clicked"/>
-        <views:HomeView x:Name="homeView" Grid.Row="1" Visibility="Collapsed"/>
-        <views:CartView x:Name="cartView" Grid.Row="1" Visibility="Collapsed"/>
-        <views:AccountView x:Name="accountView" Grid.Row="1" Visibility="Collapsed" UsernameChanged="Username_Changed"/>
-        <DockPanel>
+                <Label x:Name="LblWelcomeUser" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            </Grid>
 
-        </DockPanel>
-    </Grid>
+            <views:LoginView x:Name="loginView" Grid.Row="0" Grid.RowSpan="2" Visibility="Collapsed" LoginSuccess="Login_Success" LoginFailed="Login_Failed" Signup="Signup_Clicked"/>
+            <views:SignupView x:Name="signupView" Grid.Row="0" Grid.RowSpan="2" Visibility="Collapsed" Back="Back_Clicked" CreateAccount="CreateAccount_Clicked"/>
+            <views:HomeView x:Name="homeView" Grid.Row="1" Visibility="Collapsed"/>
+            <views:CartView x:Name="cartView" Grid.Row="1" Visibility="Collapsed"/>
+            <views:AccountView x:Name="accountView" Grid.Row="1" Visibility="Collapsed" UsernameChanged="Username_Changed"/>
+        </Grid>
+    </Border>
 </Window>

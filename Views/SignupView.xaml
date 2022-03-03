@@ -35,7 +35,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Button x:Name="BtnBack" Content="Back" Width="70" Height="35" HorizontalAlignment="Center" Click="BtnBack_Click" Background="#FF93C5C2" Foreground="Black" BorderBrush="Black"/>
+                <Button x:Name="BtnBack" Content="Back" Width="70" Height="35" HorizontalAlignment="Center" Click="BtnBack_Click" Background="#FF161919" Foreground="White" BorderBrush="Black"/>
                 <Label Content="Signup" FontSize="30" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
                 <Grid Grid.Column="1" Grid.Row="1">
@@ -68,7 +68,7 @@
                     <PasswordBox x:Name="TxtConfirmPasswordSignup" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="125" />
                 </Grid>
 
-                <Button x:Name="BtnCreateAccount" Content="Create Account"  Grid.Row="4" Grid.Column="1" Width="100" Height="35" HorizontalAlignment="Center" Click="BtnCreateAccount_Click" IsEnabled="False" LayoutUpdated="BtnCreateAccount_LayoutUpdated" Background="#FF93C5C2" Foreground="Black" BorderBrush="Black"/>
+                <Button x:Name="BtnCreateAccount" Content="Create Account"  Grid.Row="4" Grid.Column="1" Width="100" Height="35" HorizontalAlignment="Center" Click="BtnCreateAccount_Click" Background="#FF161919" Foreground="White" BorderBrush="Black"/>
             </Grid>
 
         </Border>

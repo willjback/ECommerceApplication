@@ -91,7 +91,13 @@ namespace ECommerceApplication
         #region EventHandlers
         private void Login_Success(object sender, EventArgs e)
         {
-            LblWelcomeUser.Content = "Welcome, " + File.ReadLines(filepath).Take(1).First() + "!";
+            ECommerceEntities entities = new ECommerceEntities();
+            foreach (Cart item in entities.Carts)
+                entities.Carts.Remove(item);
+            entities.SaveChanges();
+
+            LblWelcomeUser.Content = "Welcome, " + File.ReadLines(filepath).Skip(1).Take(1).First() + "!";
+            
             ToHomePage();
         }
 
@@ -117,7 +123,7 @@ namespace ECommerceApplication
 
         private void Username_Changed(object sender, EventArgs e)
         {
-            LblWelcomeUser.Content = "Welcome, " + File.ReadLines(filepath).Take(1).First() + "!";
+            LblWelcomeUser.Content = "Welcome, " + File.ReadLines(filepath).Skip(1).Take(1).First() + "!";
         }
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace ECommerceApplication.Views
     public partial class CartView : UserControl
     {
         ECommerceEntities entities = new ECommerceEntities();
+        string filepath = @"C:\MSSA\20483\Project\ECommerceApplication\userinfo.txt";
         public CartView()
         {
             InitializeComponent();
@@ -29,6 +31,20 @@ namespace ECommerceApplication.Views
 
         private void BtnCheckout_Click(object sender, RoutedEventArgs e)
         {
+            if (gridCart.Items.Count <= 1)
+            {
+                MessageBox.Show("Shopping Cart is empty!", "Checkout Incomplete", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            decimal accountBalance = Decimal.Parse(File.ReadLines(filepath).Skip(4).Take(1).First());
+            decimal total = Decimal.Parse(LblTotalCart.Content.ToString().TrimStart('$'));
+            if ((accountBalance - total) < 0)
+            {
+                MessageBox.Show("Balance too low!", "Checkout Incomplete", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             MessageBoxResult result = MessageBox.Show("Are you sure you want to checkout?", "", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.No)
                 return;
@@ -37,15 +53,35 @@ namespace ECommerceApplication.Views
                 entities.Carts.Remove(item);
             entities.SaveChanges();
 
+            decimal newBalance = accountBalance - total;
+
+            int userID = Int32.Parse(File.ReadLines(filepath).Take(1).First());
+            var user = entities.Users.FirstOrDefault(u => u.UserID == userID);
+            if (user == null)
+            {
+                MessageBox.Show("There was an error. Returned user is NULL.", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            string[] arrLines = File.ReadAllLines(filepath);
+            arrLines[4] = newBalance.ToString();
+            File.WriteAllLines(filepath, arrLines);
+
+            user.Balance = newBalance;
+            entities.SaveChanges();
+
             RefreshData();
 
-            MessageBox.Show("Your order has been submitted", "Checkout successful", MessageBoxButton.OK);
+            MessageBox.Show("Your order has been submitted", "Checkout Successful", MessageBoxButton.OK);
         }
 
         private void BtnRemoveCartItem_Click(object sender, RoutedEventArgs e)
         {
             if (gridCart.Items.Count <= 1)
+            {
+                MessageBox.Show("There are no items left.", "Checkout Incomplete", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
+            }
             Cart cart = (Cart)gridCart.SelectedItem;
             var item = entities.Carts.FirstOrDefault(i => cart.ItemNumber == i.ItemNumber);
             entities.Carts.Remove(item);

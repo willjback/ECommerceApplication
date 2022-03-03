@@ -6,46 +6,67 @@
              xmlns:local="clr-namespace:ECommerceApplication.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" FontFamily="Segoe UI Light" FontSize="20" IsVisibleChanged="UserControl_IsVisibleChanged">
-    <Grid Background="AliceBlue">
+
+    <Grid Background="GhostWhite">
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Border Grid.Column="1" Grid.Row="1" CornerRadius="20" Background="Lavender">
 
-            <DataGrid x:Name="gridCart" Grid.Row="0" Width="auto" AutoGeneratingColumn="gridCart_AutoGeneratingColumn" Margin="0,20,0,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
 
-            <Button x:Name="BtnRemoveCartItem" Content="Remove" Grid.Row="1" Height="30" Width="85" Click="BtnRemoveCartItem_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-        </Grid>
+                    <DataGrid x:Name="gridCart" Grid.Row="0" Width="auto" AutoGeneratingColumn="gridCart_AutoGeneratingColumn" Margin="0,20,0,0"/>
 
-        <Grid Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+                    <Button x:Name="BtnRemoveCartItem" Content="Remove" Grid.Row="1" Height="30" Width="85" Click="BtnRemoveCartItem_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-            <Label Content="Subtotal: " Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <Label x:Name="LblSubtotalCart" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
-            <Label Content="Tax: " Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-            <Label x:Name="LblTaxCart" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0"/>
-            <Label Content="Total: " Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-            <Label x:Name="LblTotalCart" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0"/>
+                </Grid>
 
-            <Button x:Name="BtnCheckout" Grid.Row="3" Grid.ColumnSpan="2" Content="Checkout" Height="30" Width="85" Click="BtnCheckout_Click" VerticalAlignment="Top"/>
-        </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Subtotal: " Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                    <Label x:Name="LblSubtotalCart" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <Label Content="Tax: " Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                    <Label x:Name="LblTaxCart" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0"/>
+                    <Label Content="Total: " Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                    <Label x:Name="LblTotalCart" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0"/>
+
+                    <Button x:Name="BtnCheckout" Grid.Row="3" Grid.ColumnSpan="2" Content="Checkout" Height="30" Width="85" Click="BtnCheckout_Click" VerticalAlignment="Top"/>
+                </Grid>
+            </Grid>
+
+        </Border>
+
     </Grid>
+    
 </UserControl>
