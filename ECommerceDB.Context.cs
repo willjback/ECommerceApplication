@@ -27,5 +27,6 @@ namespace ECommerceApplication
     
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
     }
 }

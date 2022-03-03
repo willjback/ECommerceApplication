@@ -52,9 +52,21 @@ namespace ECommerceApplication.Dialog
         }
         private void BtnAddToCart_Click(object sender, RoutedEventArgs e)
         {
-            cartList.Add(LblProductName.Content.ToString());
-            cartList.Add(LblQuantity.Content.ToString());
-            cartList.Add(LblTotalPrice.Content.ToString());
+            if (LblQuantity.Content.ToString() == "0")
+            {
+                MessageBox.Show("Quantity must be at least 1", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            Cart cart = new Cart();
+            cart.Product = LblProductName.Content.ToString();
+            cart.Quantity = Int32.Parse(LblQuantity.Content.ToString());
+            cart.Price = LblTotalPrice.Content.ToString();
+
+            ECommerceEntities entities = new ECommerceEntities();
+            entities.Carts.Add(cart);
+            entities.SaveChanges();
+
             this.Close();
         }
 

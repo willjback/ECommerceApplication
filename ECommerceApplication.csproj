@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cart.cs">
+      <DependentUpon>ECommerceDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\ViewItemDialog.xaml.cs">
       <DependentUpon>ViewItemDialog.xaml</DependentUpon>
     </Compile>

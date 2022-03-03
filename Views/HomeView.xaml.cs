@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,11 +12,11 @@ namespace ECommerceApplication.Views
     /// </summary>
     public partial class HomeView : UserControl
     {
-        public event EventHandler Cart;
         ECommerceEntities entities = new ECommerceEntities();
         public HomeView()
         {
             InitializeComponent();
+
             gridProducts.ItemsSource = entities.Products.ToList();
         }
 
@@ -23,11 +24,6 @@ namespace ECommerceApplication.Views
         {
             ViewItemDialog productViewer = new ViewItemDialog();
             productViewer.ShowItem((Product)gridProducts.SelectedItem);
-        }
-
-        private void BtnCart_Click(object sender, RoutedEventArgs e)
-        {
-            Cart(this, null);
         }
     }
 }

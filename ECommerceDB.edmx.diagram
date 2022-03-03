@@ -7,6 +7,7 @@
       <Diagram DiagramId="ee7391cdb5bf4e53839ac6a3b6e8b96d" Name="Diagram1">
         <EntityTypeShape EntityType="ECommerceModel.Product" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ECommerceModel.User" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ECommerceModel.Cart" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -20,10 +20,11 @@ namespace ECommerceApplication.Views
     /// </summary>
     public partial class CartView : UserControl
     {
+        ECommerceEntities entities = new ECommerceEntities();
         public CartView()
         {
             InitializeComponent();
-           // gridCart.ItemsSource = 
+            gridCart.ItemsSource = entities.Carts.ToList();
         }
 
         private void BtnCheckout_Click(object sender, RoutedEventArgs e)
@@ -31,10 +32,19 @@ namespace ECommerceApplication.Views
 
         }
 
-        //public List<string> GetList()
-        //{
+        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            gridCart.ItemsSource = null;
+            gridCart.ItemsSource = entities.Carts.ToList();
 
-        //    return
-        //}
+        }
+
+        private void gridCart_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "ItemNumber")
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }

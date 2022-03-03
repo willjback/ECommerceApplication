@@ -129,6 +129,11 @@ namespace ECommerceApplication
 
         private void BtnLogoff_Click(object sender, RoutedEventArgs e)
         {
+            ECommerceEntities entities = new ECommerceEntities();
+
+            foreach (Cart item in entities.Carts)
+                entities.Carts.Remove(item);
+            entities.SaveChanges();
             ToLogonPage();
         }
 

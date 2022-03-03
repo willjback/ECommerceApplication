@@ -5,18 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECommerceApplication.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" FontFamily="Segoe UI Light" FontSize="20">
+             d:DesignHeight="450" d:DesignWidth="800" FontFamily="Segoe UI Light" FontSize="20" IsVisibleChanged="UserControl_IsVisibleChanged">
     <Grid Background="AliceBlue">
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label Content="CHECKOUT PAGE" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <DataGrid x:Name="gridCart" Grid.Row="1"/>
+        <DataGrid x:Name="gridCart" Grid.Row="0" AutoGeneratingColumn="gridCart_AutoGeneratingColumn"/>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1">
             <Button x:Name="BtnCheckout" Content="Checkout" Height="30" Width="85" Click="BtnCheckout_Click"/>
         </Grid>
     </Grid>
