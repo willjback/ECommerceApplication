@@ -49,11 +49,11 @@
             </Grid.RowDefinitions>
 
             <Label Content="Current Password" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="20,0,0,0"/>
-            <TextBox x:Name="TxtCurrentPassword" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
+            <PasswordBox x:Name="TxtCurrentPassword" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
             <Label Content="New Password" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="20,0,0,0"/>
-            <TextBox x:Name="TxtNewPassword" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
+            <PasswordBox x:Name="TxtNewPassword" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
             <Label Content="Confirm Password" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="Black" Margin="20,0,0,0"/>
-            <TextBox x:Name="TxtConfirmPassword" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
+            <PasswordBox x:Name="TxtConfirmPassword" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Width="200" Height="25" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Top"/>
             <Button x:Name="BtnChangePassword" Content="Change Password" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Width="110" Height="35" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0,30,5,0" Background="#FFF0E5E5" Foreground="Black" BorderBrush="White" Click="BtnChangePassword_Click"/>
         </Grid>
         

@@ -44,7 +44,7 @@ namespace ECommerceApplication.Views
 
             if (user == null)
             {
-                MessageBox.Show("There was an error. Username is NULL.", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("There was an error. Returned user is NULL.", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -70,7 +70,44 @@ namespace ECommerceApplication.Views
 
         private void BtnChangePassword_Click(object sender, RoutedEventArgs e)
         {
+            string currentPassword = File.ReadLines(filepath).Skip(1).Take(1).First();
 
+            if (TxtCurrentPassword.Password != currentPassword)
+            {
+                MessageBox.Show("Current password invalid", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (TxtNewPassword.Password != TxtConfirmPassword.Password)
+            {
+                MessageBox.Show("Passwords don't match!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var user = entities.Users.FirstOrDefault(u => currentPassword == u.Password);
+
+            if (user == null)
+            {
+                MessageBox.Show("There was an error. Returned user is NULL.", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (TxtNewPassword.Password == user.Password)
+            {
+                MessageBox.Show("That's already your password!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            MessageBoxResult result = MessageBox.Show($"Password will be changed. Do you want to continue?", "", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.No)
+                return;
+
+            user.Password = TxtNewPassword.Password;
+            entities.SaveChanges();
+
+            string[] arrLines = File.ReadAllLines(filepath);
+            arrLines[1] = TxtNewPassword.Password;
+            File.WriteAllLines(filepath, arrLines);
         }
     }
 }
