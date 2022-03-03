@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ECommerceApplication.Views;
+using System.IO;
 
 namespace ECommerceApplication
 {
@@ -21,6 +22,7 @@ namespace ECommerceApplication
     /// </summary>
     public partial class MainWindow : Window
     {
+        string filepath = @"C:\MSSA\20483\Project\ECommerceApplication\userinfo.txt";
         public MainWindow()
         {
             InitializeComponent();
@@ -89,6 +91,7 @@ namespace ECommerceApplication
         #region EventHandlers
         private void Login_Success(object sender, EventArgs e)
         {
+            LblWelcomeUser.Content = "Welcome, " + File.ReadLines(filepath).Take(1).First() + "!";
             ToHomePage();
         }
 
@@ -112,6 +115,11 @@ namespace ECommerceApplication
             ToLogonPage();
         }
 
+        private void Username_Changed(object sender, EventArgs e)
+        {
+            LblWelcomeUser.Content = "Welcome, " + File.ReadLines(filepath).Take(1).First() + "!";
+        }
+
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
             ToHomePage();
@@ -127,8 +135,12 @@ namespace ECommerceApplication
             ToAccountPage();
         }
 
-        private void BtnLogoff_Click(object sender, RoutedEventArgs e)
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to logout?", "", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.No)
+                return;
+
             ECommerceEntities entities = new ECommerceEntities();
 
             foreach (Cart item in entities.Carts)
@@ -136,11 +148,7 @@ namespace ECommerceApplication
             entities.SaveChanges();
             ToLogonPage();
         }
-
-        private void Window_LayoutUpdated(object sender, EventArgs e)
-        {
-
-        }
         #endregion
+
     }
 }

@@ -29,14 +29,33 @@ namespace ECommerceApplication.Views
 
         private void BtnCheckout_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to checkout?", "", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.No)
+                return;
 
+            foreach (Cart item in entities.Carts)
+                entities.Carts.Remove(item);
+            entities.SaveChanges();
+
+            RefreshData();
+
+            MessageBox.Show("Your order has been submitted", "Checkout successful", MessageBoxButton.OK);
+        }
+
+        private void BtnRemoveCartItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (gridCart.Items.Count <= 1)
+                return;
+            Cart cart = (Cart)gridCart.SelectedItem;
+            var item = entities.Carts.FirstOrDefault(i => cart.ItemNumber == i.ItemNumber);
+            entities.Carts.Remove(item);
+            entities.SaveChanges();
+            RefreshData();
         }
 
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            gridCart.ItemsSource = null;
-            gridCart.ItemsSource = entities.Carts.ToList();
-
+            RefreshData();
         }
 
         private void gridCart_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -45,6 +64,24 @@ namespace ECommerceApplication.Views
             {
                 e.Cancel = true;
             }
+        }
+
+        private void RefreshData()
+        {
+            gridCart.ItemsSource = null;
+            gridCart.ItemsSource = entities.Carts.ToList();
+
+            double subtotal = 0;
+            foreach (Cart item in entities.Carts)
+            {
+                subtotal += double.Parse(item.Price.TrimStart('$'));
+            }
+            double tax = Math.Round(0.08 * subtotal, 2);
+            double total = subtotal + tax;
+
+            LblSubtotalCart.Content = String.Format("{0:C}", subtotal);
+            LblTaxCart.Content = String.Format("{0:C}", tax);
+            LblTotalCart.Content = String.Format("{0:C}", total);
         }
     }
 }
