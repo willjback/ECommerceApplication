@@ -35,13 +35,13 @@ namespace ECommerceApplication.Views
         {
             if (TxtNewUsername.Text == string.Empty || TxtConfirmUsername.Text == string.Empty)
             {
-                MessageBox.Show("Username text fields must be filled out!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Username text fields must be filled out.", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             if (TxtNewUsername.Text != TxtConfirmUsername.Text)
             {
-                MessageBox.Show("Usernames don't match!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Usernames don't match.", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -56,7 +56,7 @@ namespace ECommerceApplication.Views
 
             if (TxtNewUsername.Text == user.Username)
             {
-                MessageBox.Show("That's already your username!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("That's already your username.", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -81,25 +81,12 @@ namespace ECommerceApplication.Views
 
             if (TxtCurrentPassword.Password == string.Empty || TxtNewPassword.Password == string.Empty || TxtConfirmPassword.Password == string.Empty)
             {
-                MessageBox.Show("Password text fields must be filled out!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Password text fields must be filled out.", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            string currentPassword = File.ReadLines(filepath).Skip(2).Take(1).First();
-
-            if (TxtCurrentPassword.Password != currentPassword)
-            {
-                MessageBox.Show("Current password invalid", "", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            if (TxtNewPassword.Password != TxtConfirmPassword.Password)
-            {
-                MessageBox.Show("Passwords don't match!", "", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            var user = entities.Users.FirstOrDefault(u => currentPassword == u.Password);
+            int userID = Int32.Parse(File.ReadLines(filepath).Take(1).First());
+            var user = entities.Users.FirstOrDefault(u => userID == u.UserID);
 
             if (user == null)
             {
@@ -107,9 +94,21 @@ namespace ECommerceApplication.Views
                 return;
             }
 
+            if (TxtCurrentPassword.Password != user.Password)
+            {
+                MessageBox.Show("Current password invalid.", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (TxtNewPassword.Password != TxtConfirmPassword.Password)
+            {
+                MessageBox.Show("Passwords don't match.", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (TxtNewPassword.Password == user.Password)
             {
-                MessageBox.Show("That's already your password!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("That's already your password.", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -121,7 +120,7 @@ namespace ECommerceApplication.Views
             entities.SaveChanges();
 
             string[] arrLines = File.ReadAllLines(filepath);
-            arrLines[1] = TxtNewPassword.Password;
+            arrLines[2] = TxtNewPassword.Password;
             File.WriteAllLines(filepath, arrLines);
 
             RefreshAccountPage();

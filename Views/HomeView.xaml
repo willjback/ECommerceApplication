@@ -34,7 +34,7 @@
 
                 <Label Content="Items" Grid.Row="0" HorizontalAlignment="Center" FontFamily="Segoe UI Semilight" Margin="0,0,0,5"/>
 
-                <DataGrid x:Name="gridProducts" Grid.Row="1" Margin="0"/>
+                <DataGrid x:Name="gridProducts" Grid.Row="1" Margin="0" CanUserAddRows="False"/>
 
                 <Grid Grid.Row="2">
                     <Button x:Name="BtnSelectItem" Content="Select Item" Height="30" Width="100" Background="#FFF0E5E5" Click="BtnSelectItem_Click" Margin="0,5" HorizontalAlignment="Center"/>

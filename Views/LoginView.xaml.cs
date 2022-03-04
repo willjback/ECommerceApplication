@@ -17,7 +17,7 @@ namespace ECommerceApplication.Views
         public event EventHandler LoginFailed;
         public event EventHandler Signup;
 
-        ECommerceEntities entities = new ECommerceEntities();
+        
         public LoginView()
         {
             InitializeComponent();
@@ -33,6 +33,7 @@ namespace ECommerceApplication.Views
 
             if (IsLoginInfoCorrect(TxtUsername.Text, TxtPassword.Password))
             {
+                ECommerceEntities entities = new ECommerceEntities();
                 var user = entities.Users.FirstOrDefault(u => TxtUsername.Text == u.Username);
 
                 string filepath = @"C:\MSSA\20483\Project\ECommerceApplication\userinfo.txt";
@@ -64,6 +65,7 @@ namespace ECommerceApplication.Views
 
         public bool IsLoginInfoCorrect(string username, string password)
         {
+            ECommerceEntities entities = new ECommerceEntities();
             var user = entities.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
             if (user != null)
             {

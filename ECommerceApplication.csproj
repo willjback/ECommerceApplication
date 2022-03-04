@@ -75,6 +75,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ECommerceDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="LoggedUser.cs" />
     <Compile Include="Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>

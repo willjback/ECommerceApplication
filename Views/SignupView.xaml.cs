@@ -55,6 +55,8 @@ namespace ECommerceApplication.Views
             entities.Users.Add(user);
             entities.SaveChanges();
 
+            MessageBox.Show($"Your account has been created.\nWelcome, '{user.Username}'!", "Account Successfully Created", MessageBoxButton.OK);
+
             TxtUsernameSignup.Clear();
             TxtPasswordSignup.Clear();
             TxtConfirmPasswordSignup.Clear();

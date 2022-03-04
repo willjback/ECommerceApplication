@@ -22,10 +22,10 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Orientation="Horizontal" Grid.Row="0">
-                    <Button x:Name="BtnHome" Content="Home" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnHome_Click" BorderThickness="0"/>
-                    <Button x:Name="BtnCart" Content="Cart" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnCart_Click" BorderThickness="0"/>
-                    <Button x:Name="BtnAccount" Content="Account" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnAccount_Click" BorderThickness="0"/>
-                    <Button x:Name="BtnLogout" Content="Logout" Height="35" VerticalAlignment="Center" Margin="10,0,0,0" Width="75" Background="{x:Null}" BorderBrush="Black" Click="BtnLogout_Click" BorderThickness="0"/>
+                    <Button x:Name="BtnHome" Content="Home" Height="35" VerticalAlignment="Center" Margin="20,0,0,0" Background="{x:Null}" BorderBrush="Black" Click="BtnHome_Click" BorderThickness="0"/>
+                    <Button x:Name="BtnCart" Content="Cart" Height="35" VerticalAlignment="Center" Margin="20,0,0,0" Background="{x:Null}" BorderBrush="Black" Click="BtnCart_Click" BorderThickness="0"/>
+                    <Button x:Name="BtnAccount" Content="Account" Height="35" VerticalAlignment="Center" Margin="20,0,0,0" Background="{x:Null}" BorderBrush="Black" Click="BtnAccount_Click" BorderThickness="0"/>
+                    <Button x:Name="BtnLogout" Content="Logout" Height="35" VerticalAlignment="Center" Margin="20,0,0,0" Background="{x:Null}" BorderBrush="Black" Click="BtnLogout_Click" BorderThickness="0"/>
                 </StackPanel>
 
                 <Label x:Name="LblWelcomeUser" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
